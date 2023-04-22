@@ -1,8 +1,11 @@
 const User = require('../models/User')
 
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
+// helpers
 const createUserToken = require('../helpers/create-user-token')
+const getToken = require('../helpers/get-token')
 
 module.exports = class UserController {
     static async register(req, res) {
@@ -104,9 +107,13 @@ module.exports = class UserController {
     static async checkUser(req, res) {
         let currentUser
 
-        console.log(req.headers.authorization)
-
         if (req.headers.authorization) {
+            const token = getToken(req)
+            const decoded = jwt.verify(token, 'nossosecret')
+
+            currentUser = await User.findById(decoded.id)
+
+            currentUser.password = undefined
         } else {
             currentUser = null
         }
