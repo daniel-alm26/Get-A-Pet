@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const UserController = require('../controllers/UserController')
 
-// middleware
+// middlewares
 const verifyToken = require('../helpers/verify-token')
 const { imageUpload } = require('../helpers/image-upload')
 
