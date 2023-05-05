@@ -302,7 +302,7 @@ module.exports = class PetController {
         await Pet.findByIdAndUpdate(id, pet)
 
         res.status(200).json({
-            message: 'Parabéns! O ciclo de adoção foi finalizado com sucesso!'
+            message: 'Parabéns! O ciclo de adoção foi finalizado com sucesso!!!'
         })
     }
 }
