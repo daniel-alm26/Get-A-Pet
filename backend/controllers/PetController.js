@@ -243,7 +243,7 @@ module.exports = class PetController {
 
         if (pet.user._id.equals(user._id)) {
             res.status(422).json({
-                message: 'Você não pode agendar uma visita com o seu próprio pet'
+                message: 'Você não pode agendar uma visita com o seu próprio Pet!'
             })
             return
         }
